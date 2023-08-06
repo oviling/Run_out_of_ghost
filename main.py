@@ -7,6 +7,24 @@ pg.display.set_caption("Убеги от преведешка!")
 pg.display.set_icon(pg.image.load("textures/ghost-a.png"))
 screen.fill((114, 157, 224))
 
+
+def ghost_move(keys, ghost_x, ghost_y, player_speed):
+    if keys[pg.K_a]:
+        ghost_x -= player_speed
+        return ghost_x, ghost_y
+    elif keys[pg.K_d]:
+        ghost_x += player_speed
+        return ghost_x, ghost_y
+    elif keys[pg.K_s]:
+        ghost_y += player_speed
+        return ghost_x, ghost_y
+    elif keys[pg.K_w]:
+        ghost_y -= player_speed
+        return ghost_x, ghost_y
+    else:
+        return ghost_x, ghost_y
+
+
 def cat_move(keys, cat_x, cat_y, player_speed):
     if keys[pg.K_LEFT]:
         cat_x -= player_speed
@@ -20,8 +38,14 @@ def cat_move(keys, cat_x, cat_y, player_speed):
     elif keys[pg.K_UP]:
         cat_y -= player_speed
         return cat_x, cat_y
+    #elif keys[pg.K_SPACE]:
+    #    cat_ability(ghost_x, ghost_y)
     else:
         return cat_x, cat_y
+
+
+    #def cat_ability(ghost_x, ghost_y):
+    #    ghost_x, ghost_y = 0, 0
 
 
 player_speed = 9
@@ -43,13 +67,11 @@ while running:
     keys = pg.key.get_pressed()
 
     cat_x, cat_y = cat_move(keys, cat_x, cat_y, player_speed)
+    ghost_x, ghost_y = ghost_move(keys, ghost_x, ghost_y, player_speed)
 
     screen.blit(bg, (0, 0))
-    screen.blit(ghost, (0, 0))
+    screen.blit(ghost, (ghost_x, ghost_y))
     screen.blit(cat, (cat_x, cat_y))
-
-
-
 
     pg.display.update()
 
@@ -57,7 +79,5 @@ while running:
         if event.type == pg.QUIT:
             running = False
             pg.quit()
-       #elif event.type == pg.KEYDOWN:
-       #    if event.key == pg.K_a:
-       #        screen.fill((70, 44, 133))
+
     clock.tick(60)
