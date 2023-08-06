@@ -1,26 +1,22 @@
 import pygame as pg
 
 pg.init()
-screen = pg.display.set_mode((480, 360))
+screen = pg.display.set_mode((960, 720))
 pg.display.set_caption("Убеги от преведешка!")
 pg.display.set_icon(pg.image.load("textures/ghost-a.png"))
 screen.fill((114, 157, 224))
 
-square = pg.Surface((50, 170))
-square.fill("Red")
 
-myfont = pg.font.Font("fonts/Roboto-Italic.ttf", 40)
-text_surface = myfont.render("Привет!", True, "Purple")
-
-ghost = pg.image.load("textures/ghost-a.png", )
+bg = pg.image.load("textures/Woods.png")
+ghost = pg.transform.scale(pg.image.load("textures/ghost-a.png"), (54, 102)) #2.7
+cat = pg.transform.scale(pg.image.load("textures/costume2.png"), (85, 102))
 
 running = True
 while running:
 
-    screen.blit(square, (10, 10))
-    screen.blit(text_surface, (200, 10))
-    pg.draw.circle(screen, "Blue", (100, 100), 30)
-    screen.blit(ghost, (200, 80))
+    screen.blit(bg, (0, 0))
+    screen.blit(ghost, (0, 0))
+    screen.blit(cat, (100, 100))
 
     pg.display.update()
 
