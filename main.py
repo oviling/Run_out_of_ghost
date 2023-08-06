@@ -9,10 +9,18 @@ screen.fill((114, 157, 224))
 square = pg.Surface((50, 170))
 square.fill("Red")
 
+myfont = pg.font.Font("fonts/Roboto-Italic.ttf", 40)
+text_surface = myfont.render("Привет!", True, "Purple")
+
+ghost = pg.image.load("textures/ghost-a.png", )
+
 running = True
 while running:
 
     screen.blit(square, (10, 10))
+    screen.blit(text_surface, (200, 10))
+    pg.draw.circle(screen, "Blue", (100, 100), 30)
+    screen.blit(ghost, (200, 80))
 
     pg.display.update()
 
