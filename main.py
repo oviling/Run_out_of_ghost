@@ -74,9 +74,9 @@ go_sound = pg.mixer.Sound("sounds/goo.mp3")
 
 
 myfont = pg.font.Font("font/Roboto-Italic.ttf", 25)
-gameover_text = myfont.render("Для перезапуска нажмите на данное сообщение", True, "Purple")
+gameover_text = myfont.render("Для перезапуска наведите на данное сообщение", True, "Purple")
 gameover_text_rect = gameover_text.get_rect(topleft=(25, 350))
-win_text = myfont.render("Кися победила, для перезапуска нажмите на данный текст", True, "Purple")
+win_text = myfont.render("Кися победила, для перезапуска наведите на данный текст", True, "Purple")
 win_text_rect = win_text.get_rect(topleft=(25, 350))
 
 bg = pg.image.load("textures/Woods.png").convert()
